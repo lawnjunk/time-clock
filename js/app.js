@@ -1,5 +1,5 @@
 'use strict';
-
+var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 var tableDiv = document.getElementById('display-employees');
 var addEmployeeForm = document.getElementById('add-employee-form');
 addEmployeeForm.addEventListener('submit', addEmployee);
@@ -30,10 +30,12 @@ function Schedule() {
 }
 
 function makeTable(){
-  var table = document.getElementById('table');
+  var main = getElementById('main');
+  var table = document.createElement('table');
   table.setAttribute('id', 'table');
+  main.appendChild(table);
 }
-makeTable();
+
 function addEmployee(event) {
   event.preventDefault();
 
