@@ -6,10 +6,11 @@ addEmployeeForm.addEventListener('submit', addEmployee);
 
 var employeeCounter;
 try {
+  employeeCounter = 1000;
   if(localStorage.getItem('employeeCounter')) {
     employeeCounter = localStorage.getItem('employeeCounter');
   }
-  employeeCounter = 1000;
+
   localStorage.setItem('employeeCounter', employeeCounter);
 } catch(error) {
   console.log(error);
@@ -30,6 +31,10 @@ function Schedule() {
 
 function addEmployee(event) {
   event.preventDefault();
+
+  if(event.target.employeeName.value === '') {
+    return;
+  }
 
   var name = event.target.employeeName.value;
 
@@ -84,6 +89,9 @@ function displayEmployees() {
     employeeRow = document.createElement('tr'), employeeData;
     employeeData = document.createElement('td');
     employeeData.textContent = employees[i].name;
+    employeeRow.appendChild(employeeData);
+    employeeData = document.createElement('td');
+    employeeData.textContent = employees[i].id;
     employeeRow.appendChild(employeeData);
     table.appendChild(employeeRow);
   }
