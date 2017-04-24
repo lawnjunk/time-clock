@@ -28,6 +28,11 @@ function Schedule() {
   this.friday = [];
 }
 
+function makeTable(){
+  var table = document.getElementById('table');
+  table.setAttribute('id', 'table');
+}
+makeTable();
 function addEmployee(event) {
   event.preventDefault();
 
