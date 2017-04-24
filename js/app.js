@@ -1,8 +1,5 @@
 'use strict';
 
-<<<<<<< HEAD
-function Employee(name) {
-=======
 var tableDiv = document.getElementById('display-employees');
 var addEmployeeForm = document.getElementById('add-employee-form');
 addEmployeeForm.addEventListener('submit', addEmployee);
@@ -19,7 +16,6 @@ try {
 }
 
 function Employee(name, id) {
->>>>>>> b52e3c27a6738c7b29e7daad5783ab9871bac52c
   this.name = name;
   this.id = id;
 }
@@ -31,9 +27,6 @@ function Schedule() {
   this.thursday = [];
   this.friday = [];
 }
-<<<<<<< HEAD
-table
-=======
 
 function addEmployee(event) {
   event.preventDefault();
@@ -104,4 +97,3 @@ if(document.getElementById('display-employees')) {
   getAndSetLocalStorage(employees, admin);
   displayEmployees();
 }
->>>>>>> b52e3c27a6738c7b29e7daad5783ab9871bac52c
