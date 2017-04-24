@@ -92,8 +92,11 @@ function displayEmployees() {
 }
 
 if(document.getElementById('display-employees')) {
-  var admin = new Employee('admin', 1000);
-  var employees = [];
-  getAndSetLocalStorage(employees, admin);
+  if(!localStorage.getItem('employees') || localStorage.getItem('employees').length === 0) {
+    var admin = new Employee('admin', 1000);
+    var employees = [];
+    getAndSetLocalStorage(employees, admin);
+  }
+
   displayEmployees();
 }
