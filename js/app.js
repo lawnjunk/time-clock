@@ -68,17 +68,7 @@ function getAndSetLocalStorage(array, newData) { // updates the local 'array' by
 }
 
 function displayEmployees() {
-  var employees;
-
-  try {
-    if(JSON.parse(localStorage.getItem('employees'))) { // grab employees array or create a blank one if it doesnt exist locally
-      employees = JSON.parse(localStorage.getItem('employees'));
-    } else {
-      employees = [];
-    }
-  } catch(error) {
-    employees = 'No Employees';
-  }
+  var employees = getLocalEmployees();
   var table = document.createElement('table');
   var titleRow = document.createElement('tr');
   var titleData = document.createElement('th');
@@ -101,18 +91,8 @@ function displayEmployees() {
   tableDiv.appendChild(table);
 }
 
-function displayTodayEmployees() {
-  var employees;
-
-  try {
-    if(JSON.parse(localStorage.getItem('employees'))) { // grab employees array or create a blank one if it doesnt exist locally
-      employees = JSON.parse(localStorage.getItem('employees'));
-    } else {
-      employees = [];
-    }
-  } catch(error) {
-    employees = 'No Employees';
-  }
+function displayTodayEmployees() { // same as displayEmployees but it filters by who is on the clock. refactor?
+  var employees = getLocalEmployees();
   var employeesToday = [];
   for(var i = 0; i < employees.length; i++) {
     if(employees[i].onTheClock) {
@@ -142,8 +122,20 @@ function displayTodayEmployees() {
   tableDiv.appendChild(table);
 }
 
-function getEmployeeSelect() {
+function getEmployeeSelect() { // select bar with all the current employees as options. value = their id
   var select = document.createElement('select');
+  var employees = getLocalEmployees();
+  var option;
+  for(var i = 0; i < employees.length; i++) {
+    option = document.createElement('option');
+    option.setAttribute('value', employees[i].id);
+    option.textContent = employees[i].name;
+    select.appendChild(option);
+  }
+  return select;
+}
+
+function getLocalEmployees() {
   var employees;
 
   try {
@@ -155,14 +147,7 @@ function getEmployeeSelect() {
   } catch(error) {
     employees = 'No Employees';
   }
-  var option;
-  for(var i = 0; i < employees.length; i++) {
-    option = document.createElement('option');
-    option.setAttribute('value', employees[i].id);
-    option.textContent = employees[i].name;
-    select.appendChild(option);
-  }
-  return select;
+  return employees;
 }
 
 if(document.getElementById('display-employees')) {
