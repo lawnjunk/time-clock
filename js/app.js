@@ -4,12 +4,13 @@ var tableDiv = document.getElementById('display-employees');
 var addEmployeeForm = document.getElementById('add-employee-form');
 addEmployeeForm.addEventListener('submit', addEmployee);
 
-var employeeCounter;
+var employeeCounter; // if no employee counter is set, set to 1000. otherwise fetch from localstorage
 try {
+  employeeCounter = 1000;
   if(localStorage.getItem('employeeCounter')) {
     employeeCounter = localStorage.getItem('employeeCounter');
   }
-  employeeCounter = 1000;
+
   localStorage.setItem('employeeCounter', employeeCounter);
 } catch(error) {
   console.log(error);
@@ -31,9 +32,13 @@ function Schedule() {
 function addEmployee(event) {
   event.preventDefault();
 
+  if(event.target.employeeName.value === '') { // if they didnt enter a name
+    return;
+  }
+
   var name = event.target.employeeName.value;
 
-  var id = parseInt(localStorage.getItem('employeeCounter'));
+  var id = parseInt(localStorage.getItem('employeeCounter')); // increment employee id and then put the new one back in local
   id++;
   localStorage.setItem('employeeCounter', id);
 
@@ -46,7 +51,7 @@ function addEmployee(event) {
   displayEmployees();
 }
 
-function getAndSetLocalStorage(array, newData) {
+function getAndSetLocalStorage(array, newData) { // updates the local 'array' by adding 'newData'
   try {
     if(localStorage.getItem('employees')) {
       array = JSON.parse(localStorage.getItem('employees'));
@@ -64,7 +69,7 @@ function displayEmployees() {
   var employees;
 
   try {
-    if(JSON.parse(localStorage.getItem('employees'))) {
+    if(JSON.parse(localStorage.getItem('employees'))) { // grab employees array or create a blank one if it doesnt exist locally
       employees = JSON.parse(localStorage.getItem('employees'));
     } else {
       employees = [];
@@ -85,6 +90,9 @@ function displayEmployees() {
     employeeData = document.createElement('td');
     employeeData.textContent = employees[i].name;
     employeeRow.appendChild(employeeData);
+    employeeData = document.createElement('td');
+    employeeData.textContent = employees[i].id;
+    employeeRow.appendChild(employeeData);
     table.appendChild(employeeRow);
   }
 
@@ -92,7 +100,7 @@ function displayEmployees() {
 }
 
 if(document.getElementById('display-employees')) {
-  if(!localStorage.getItem('employees') || localStorage.getItem('employees').length === 0) {
+  if(!localStorage.getItem('employees') || localStorage.getItem('employees').length === 0) { // if localstorage employees doesnt exist, or it is length 0, add the admin account at id 1000
     var admin = new Employee('admin', 1000);
     var employees = [];
     getAndSetLocalStorage(employees, admin);
