@@ -19,6 +19,7 @@ try {
 function Employee(name, id) {
   this.name = name;
   this.id = id;
+  this.onTheClock = false;
 }
 
 function Schedule() {
@@ -49,6 +50,7 @@ function addEmployee(event) {
   addEmployeeForm.reset();
   tableDiv.innerHTML = '';
   displayEmployees();
+  displayTodayEmployees();
 }
 
 function getAndSetLocalStorage(array, newData) { // updates the local 'array' by adding 'newData'
@@ -80,13 +82,13 @@ function displayEmployees() {
   var table = document.createElement('table');
   var titleRow = document.createElement('tr');
   var titleData = document.createElement('th');
-  titleData.textContent = 'Employee Name';
+  titleData.textContent = 'All Employees';
   titleRow.appendChild(titleData);
   table.appendChild(titleRow);
 
   var employeeRow, employeeData;
   for(var i = 0; i < employees.length; i++) {
-    employeeRow = document.createElement('tr'), employeeData;
+    employeeRow = document.createElement('tr');
     employeeData = document.createElement('td');
     employeeData.textContent = employees[i].name;
     employeeRow.appendChild(employeeData);
@@ -99,6 +101,70 @@ function displayEmployees() {
   tableDiv.appendChild(table);
 }
 
+function displayTodayEmployees() {
+  var employees;
+
+  try {
+    if(JSON.parse(localStorage.getItem('employees'))) { // grab employees array or create a blank one if it doesnt exist locally
+      employees = JSON.parse(localStorage.getItem('employees'));
+    } else {
+      employees = [];
+    }
+  } catch(error) {
+    employees = 'No Employees';
+  }
+  var employeesToday = [];
+  for(var i = 0; i < employees.length; i++) {
+    if(employees[i].onTheClock) {
+      employeesToday.push(employees[i]);
+    }
+  }
+
+  var table = document.createElement('table');
+  var titleRow = document.createElement('tr');
+  var titleData = document.createElement('th');
+  titleData.textContent = 'Employees On The Clock';
+  titleRow.appendChild(titleData);
+  table.appendChild(titleRow);
+
+  var employeeRow, employeeData;
+  for(i = 0; i < employeesToday.length; i++) {
+    employeeRow = document.createElement('tr');
+    employeeData = document.createElement('td');
+    employeeData.textContent = employeesToday[i].name;
+    employeeRow.appendChild(employeeData);
+    employeeData = document.createElement('td');
+    employeeData.textContent = employeesToday[i].id;
+    employeeRow.appendChild(employeeData);
+    table.appendChild(employeeRow);
+  }
+
+  tableDiv.appendChild(table);
+}
+
+function getEmployeeSelect() {
+  var select = document.createElement('select');
+  var employees;
+
+  try {
+    if(JSON.parse(localStorage.getItem('employees'))) { // grab employees array or create a blank one if it doesnt exist locally
+      employees = JSON.parse(localStorage.getItem('employees'));
+    } else {
+      employees = [];
+    }
+  } catch(error) {
+    employees = 'No Employees';
+  }
+  var option;
+  for(var i = 0; i < employees.length; i++) {
+    option = document.createElement('option');
+    option.setAttribute('value', employees[i].id);
+    option.textContent = employees[i].name;
+    select.appendChild(option);
+  }
+  return select;
+}
+
 if(document.getElementById('display-employees')) {
   if(!localStorage.getItem('employees') || localStorage.getItem('employees').length === 0) { // if localstorage employees doesnt exist, or it is length 0, add the admin account at id 1000
     var admin = new Employee('admin', 1000);
@@ -107,4 +173,8 @@ if(document.getElementById('display-employees')) {
   }
 
   displayEmployees();
+}
+
+if(document.getElementById('employees-today')) {
+  displayTodayEmployees();
 }
