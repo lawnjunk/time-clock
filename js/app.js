@@ -1,9 +1,23 @@
 'use strict';
 
 var tableDiv = document.getElementById('display-employees');
+var addEmployeeForm = document.getElementById('add-employee-form');
+addEmployeeForm.addEventListener('submit', addEmployee);
 
-function Employee(name) {
+var employeeCounter;
+try {
+  if(localStorage.getItem('employeeCounter')) {
+    employeeCounter = localStorage.getItem('employeeCounter');
+  }
+  employeeCounter = 1000;
+  localStorage.setItem('employeeCounter', employeeCounter);
+} catch(error) {
+  console.log(error);
+}
+
+function Employee(name, id) {
   this.name = name;
+  this.id = id;
 }
 
 function Schedule() {
@@ -14,36 +28,47 @@ function Schedule() {
   this.friday = [];
 }
 
-var addEmployeeForm = document.getElementById('add-employee-form');
-addEmployeeForm.addEventListener('submit', addEmployee);
-
 function addEmployee(event) {
   event.preventDefault();
 
   var name = event.target.employeeName.value;
 
-  var newEmployee = new Employee(name);
-  var employees = [];
-  try {
-    if(localStorage.getItem('employees')) {
-      employees = JSON.parse(localStorage.getItem('employees'));
-    } else {
-      employees = [];
-    }
-    employees.push(newEmployee);
-    localStorage.setItem('employees', JSON.stringify(employees));
-  } catch(error) {
-    console.log(error);
-  }
+  var id = parseInt(localStorage.getItem('employeeCounter'));
+  id++;
+  localStorage.setItem('employeeCounter', id);
 
+  var newEmployee = new Employee(name, id);
+  var employees = [];
+  getAndSetLocalStorage(employees, newEmployee);
+
+  addEmployeeForm.reset();
   tableDiv.innerHTML = '';
   displayEmployees();
 }
 
+function getAndSetLocalStorage(array, newData) {
+  try {
+    if(localStorage.getItem('employees')) {
+      array = JSON.parse(localStorage.getItem('employees'));
+    } else {
+      array = [];
+    }
+    array.push(newData);
+    localStorage.setItem('employees', JSON.stringify(array));
+  } catch(error) {
+    console.log(error);
+  }
+}
+
 function displayEmployees() {
   var employees;
+
   try {
-    employees = JSON.parse(localStorage.getItem('employees'));
+    if(JSON.parse(localStorage.getItem('employees'))) {
+      employees = JSON.parse(localStorage.getItem('employees'));
+    } else {
+      employees = [];
+    }
   } catch(error) {
     employees = 'No Employees';
   }
@@ -66,4 +91,9 @@ function displayEmployees() {
   tableDiv.appendChild(table);
 }
 
-displayEmployees();
+if(document.getElementById('display-employees')) {
+  var admin = new Employee('admin', 1000);
+  var employees = [];
+  getAndSetLocalStorage(employees, admin);
+  displayEmployees();
+}
