@@ -28,13 +28,22 @@ function Schedule() {
   this.thursday = [];
   this.friday = [];
 }
+Schedule.prototype.getTable= function (){
+  var table = document.getElementById('table');
+  var tableRow = document.createElement('tr');
+  var tableData = document.createElement('td');
+  tableData.textContent = days[i];
+  tableRow.appendChild(tableData);
+};
 
 function makeTable(){
-  var main = getElementById('main');
+  var main = document.getElementById('main');
   var table = document.createElement('table');
   table.setAttribute('id', 'table');
   main.appendChild(table);
 }
+makeTable();
+
 
 function addEmployee(event) {
   event.preventDefault();
