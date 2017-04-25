@@ -29,13 +29,36 @@ function Schedule() {
   this.thursday = [];
   this.friday = [];
 }
-function addRows (){
-  var myTable = document.getElementById('myTable')
-  var rowCount = myTable.rows.length;
-  var row = myTable.insertRow(rowCount);
+function makeTable(){
+  var main = document.getElementById('main');
+  var table = document.createElement('table');
+  table.setAttribute('id', 'table');
+  main.appendChild(table);
 }
+makeTable();
 
-
+Schedule.prototype.getTable = function (){
+  var table = document.getElementById('table');
+  var tableRow = document.createElement('tr');
+  var tableData = document.createElement('td');
+  for (var i = 0; i < days.length; i++){
+    tableData = document.createElement('td');
+    tableData.appendChild(getEmployeeSelect());
+    tableRow.appendChild(tableData);
+  }
+  table.appendChild(tableRow);
+};
+Schedule.prototype.getTableHeader = function(){
+  var table = document.getElementById('table');
+  var tableRow = document.createElement('tr');
+  var tableHead = document.createElement('th');
+  for (var i = 0; i < days.length;i++){
+    tableHead = document.createElement('th');
+    tableHead.textContent = days[i];
+    tableRow.appendChild(tableHead);
+  }
+  table.appendChild(tableRow);
+}
 function addEmployee(event) {
   event.preventDefault();
 
@@ -184,3 +207,6 @@ if(document.getElementById('display-employees')) {
 if(document.getElementById('employees-today')) {
   displayTodayEmployees();
 }
+var schedule = new Schedule();
+schedule.getTableHeader();
+schedule.getTable();
