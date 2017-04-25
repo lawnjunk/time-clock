@@ -1,0 +1,32 @@
+.clear-fix{
+  clear: both;
+}
+
+*{
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+}
+.hamburger-nav{
+  position: fixed;
+  width:200px;
+  border: 1px solid black;
+  float:left;
+}
+
+.hamburger-nav.hidden{
+  transform:translateY(-53px);
+}
+.hamburger-icon{
+  width: 30px;
+  height:50px;
+  margin: 10px auto;
+}
+.hamburger-icon div{
+  height: calc(15px/3);
+  margin-bottom: 2px;
+  background: black;
+}
+li{
+  text-align: center;
+}
