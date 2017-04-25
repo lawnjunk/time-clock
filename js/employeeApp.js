@@ -41,3 +41,7 @@ hamburgerIcon.addEventListener('click', function(){
     hamburgerNav.className = 'hamburger-nav hidden';
   }
 });
+
+var image = document.getElementById('img');
+var employee = JSON.parse(localStorage.getItem('thisEmployee'));
+image.setAttribute('src', employee.profilePic);
