@@ -30,3 +30,16 @@
 li{
   text-align: center;
 }
+.emplyee-month{
+  border: 1px solid black;
+}
+.employee-month-image{
+  height: 130px;
+  width: 12%;
+  display: inline-block;
+  margin-top: 100px;
+}
+
+.best-employee-h1{
+  display: inline-block;
+}
