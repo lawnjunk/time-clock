@@ -2,17 +2,42 @@
 <html>
 
 <head>
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/employee.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" />
 </head>
 
 <body>
 
-  <div id="top-bar"></div>
+  <div id="top-bar">
+    <div id="hamburger-nav" class="hamburger-nav hidden">
+      <img class="profile-image" id="img" src="img/profile.png"/>
+      <div class="menu">
+        <ul>
+          <a href="editProfile.html"><li>Change Profile Information</li></a>
+          <a href="https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=panda+bear"><li>infomation</li></a>
+          <a href="https://www.google.com/search?q=panda+bear&espv=2&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjMsr2TisDTAhVL6GMKHQZqA4EQ_AUIBigB&biw=1235&bih=664&dpr=2#imgrc=EPVmBiM5_oeqTM:"><li>Phone Number</li></a>
+          <a href="https://www.google.com/search?q=panda+bear&espv=2&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjMsr2TisDTAhVL6GMKHQZqA4EQ_AUIBigB&biw=1235&bih=664&dpr=2#imgrc=EPVmBiM5_oeqTM"><li>Log out</li></a>
+        </ul>
+      </div>
+      <div id="hamburger-icon" class="hamburger-icon">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
 
   <div id="employee-main">
 
-    <div id="hamburger"></div>
-    <div id="employee-month"></div>
+    <div class="emplyee-month" id="employee-month">
+      <img class="employee-month-image" src="img/Aaron.png"/>
+      <h1 class="best-employee-h1"> Best Employee of the month</h1>
+      <h2> At Spencer Industries punctuality is of the top importance</h2>
+      <p>
+        Always interacts with co-workers and other departments in a respectful manner and values their contributions. Cooperate with co-workers and assists them when help is needed. Is complimentary of other departments and a job well done. Arrives on time for scheduled meetings, events or activities.
+      </p>
+      <h2>Empolyee of the month will recieve $10,000</h2>
+    </div>
     <form id="clock-in">
       <button id="clockIn" type="submit">Clock In</button>
     </form>
@@ -27,9 +52,9 @@
 
   <div id="bottom-bar"></div>
 
+
+
   <script src="js/employeeApp.js"></script>
-
-
 </body>
 
 
