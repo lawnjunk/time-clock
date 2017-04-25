@@ -236,7 +236,7 @@ function getEmployeeSelect() {
   var option;
   for(var i = 0; i < employees.length; i++) {
     option = document.createElement('option');
-    option.setAttribute('value', employees[i].id);
+    option.setAttribute('value', employees[i].name);
     option.textContent = employees[i].name;
     select.appendChild(option);
   }
