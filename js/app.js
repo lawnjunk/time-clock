@@ -20,6 +20,9 @@ function Employee(name, id) {
   this.name = name;
   this.id = id;
   this.onTheClock = false;
+  this.profilePic = '';
+  this.phoneNumber = '';
+  this.email = '';
 }
 
 function Schedule() {
