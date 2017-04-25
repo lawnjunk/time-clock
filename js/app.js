@@ -1,5 +1,5 @@
 'use strict';
-
+var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 var tableDiv = document.getElementById('display-employees');
 var addEmployeeForm = document.getElementById('add-employee-form');
 addEmployeeForm.addEventListener('submit', addEmployee);
@@ -29,7 +29,36 @@ function Schedule() {
   this.thursday = [];
   this.friday = [];
 }
+function makeTable(){
+  var main = document.getElementById('main');
+  var table = document.createElement('table');
+  table.setAttribute('id', 'table');
+  main.appendChild(table);
+}
+makeTable();
 
+Schedule.prototype.getTable = function (){
+  var table = document.getElementById('table');
+  var tableRow = document.createElement('tr');
+  var tableData = document.createElement('td');
+  for (var i = 0; i < days.length; i++){
+    tableData = document.createElement('td');
+    tableData.appendChild(getEmployeeSelect());
+    tableRow.appendChild(tableData);
+  }
+  table.appendChild(tableRow);
+};
+Schedule.prototype.getTableHeader = function(){
+  var table = document.getElementById('table');
+  var tableRow = document.createElement('tr');
+  var tableHead = document.createElement('th');
+  for (var i = 0; i < days.length;i++){
+    tableHead = document.createElement('th');
+    tableHead.textContent = days[i];
+    tableRow.appendChild(tableHead);
+  }
+  table.appendChild(tableRow);
+}
 function addEmployee(event) {
   event.preventDefault();
 
@@ -68,7 +97,17 @@ function getAndSetLocalStorage(array, newData) { // updates the local 'array' by
 }
 
 function displayEmployees() {
-  var employees = getLocalEmployees();
+  var employees;
+
+  try {
+    if(JSON.parse(localStorage.getItem('employees'))) { // grab employees array or create a blank one if it doesnt exist locally
+      employees = JSON.parse(localStorage.getItem('employees'));
+    } else {
+      employees = [];
+    }
+  } catch(error) {
+    employees = 'No Employees';
+  }
   var table = document.createElement('table');
   var titleRow = document.createElement('tr');
   var titleData = document.createElement('th');
@@ -91,8 +130,18 @@ function displayEmployees() {
   tableDiv.appendChild(table);
 }
 
-function displayTodayEmployees() { // same as displayEmployees but it filters by who is on the clock. refactor?
-  var employees = getLocalEmployees();
+function displayTodayEmployees() {
+  var employees;
+
+  try {
+    if(JSON.parse(localStorage.getItem('employees'))) { // grab employees array or create a blank one if it doesnt exist locally
+      employees = JSON.parse(localStorage.getItem('employees'));
+    } else {
+      employees = [];
+    }
+  } catch(error) {
+    employees = 'No Employees';
+  }
   var employeesToday = [];
   for(var i = 0; i < employees.length; i++) {
     if(employees[i].onTheClock) {
@@ -122,20 +171,8 @@ function displayTodayEmployees() { // same as displayEmployees but it filters by
   tableDiv.appendChild(table);
 }
 
-function getEmployeeSelect() { // select bar with all the current employees as options. value = their id
+function getEmployeeSelect() {
   var select = document.createElement('select');
-  var employees = getLocalEmployees();
-  var option;
-  for(var i = 0; i < employees.length; i++) {
-    option = document.createElement('option');
-    option.setAttribute('value', employees[i].id);
-    option.textContent = employees[i].name;
-    select.appendChild(option);
-  }
-  return select;
-}
-
-function getLocalEmployees() {
   var employees;
 
   try {
@@ -147,7 +184,14 @@ function getLocalEmployees() {
   } catch(error) {
     employees = 'No Employees';
   }
-  return employees;
+  var option;
+  for(var i = 0; i < employees.length; i++) {
+    option = document.createElement('option');
+    option.setAttribute('value', employees[i].id);
+    option.textContent = employees[i].name;
+    select.appendChild(option);
+  }
+  return select;
 }
 
 if(document.getElementById('display-employees')) {
@@ -163,3 +207,6 @@ if(document.getElementById('display-employees')) {
 if(document.getElementById('employees-today')) {
   displayTodayEmployees();
 }
+var schedule = new Schedule();
+schedule.getTableHeader();
+schedule.getTable();
