@@ -18,8 +18,17 @@ function clockOut(event) {
   event.preventDefault();
 
   var employee = JSON.parse(localStorage.getItem('thisEmployee'));
+  var employees = JSON.parse(localStorage.getItem('employees'));
+
   employee.onTheClock = false;
+
+  for(var i = 0; i < employees.length; i++) {
+    if(employees[i].id === employee.id) {
+      employees[i] = employee;
+    }
+  }
   localStorage.setItem('thisEmployee', JSON.stringify(employee));
+  localStorage.setItem('employees', JSON.stringify(employees));
 }
 
 var hamburgerNav = document.getElementById('hamburger-nav');
