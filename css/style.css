@@ -3,19 +3,6 @@
 }
 
 *{
-  width: 100%;
+  box-sizing: border-box;
   margin: 0 auto;
   padding: 0;
-
-}
-
-html,body{
-  background-color: rgb(242, 235, 228);
-}
-#top-bar{
-  background-color: rgb(44, 58, 64);
-  position: fixed;
-}
-#bottom-bar{
-  background-color: rgb(44, 58, 64);
-}
