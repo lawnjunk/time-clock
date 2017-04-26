@@ -11,7 +11,52 @@ var Wednesday = [];
 var Thursday = [];
 var Friday = [];
 
+var employeeList = (JSON.parse(localStorage.getItem('employees')));
+var employeeSelector = document.getElementById('remove-employee');
 
+function removeEmployee(){
+  var firedButton = document.createElement('input');
+  firedButton.setAttribute('type', 'submit');
+  firedButton.setAttribute('value', 'Fired');
+  var selectRemove = document.createElement('select');
+  employeeSelector.appendChild(selectRemove);
+  selectRemove.setAttribute('id', 'removeSelector');
+  employeeSelector.appendChild(firedButton);
+  for(var i = 0; i < employeeList.length; i++) {
+    var removeOption = document.createElement('option');
+    removeOption.setAttribute('value', employeeList[i].name);
+    removeOption.textContent = employeeList[i].name;
+    selectRemove.appendChild(removeOption);
+  }
+  employeeSelector.addEventListener('submit', terminatedWithPrejudice);
+}
+
+
+function terminatedWithPrejudice(event){
+  event.preventDefault();
+
+  var terminated = event.target.removeSelector.value;
+
+  for(var i = 0; i < employeeList.length; i++){
+    if(employeeList[i].name === terminated) {
+      employeeList.splice(i, 1);
+    }
+  }
+  localStorage.setItem('employees', JSON.stringify(employeeList));
+  employeeList = JSON.parse(localStorage.getItem('employees'));
+  tableDiv.innerHTML = '';
+  var table = document.getElementById('table');
+  table.innerHTML = '';
+  makeTable();
+  displayEmployees();
+  displayTodayEmployees();
+  schedule.getTableHeader();
+  schedule.getTable();
+  employeeSelector.innerHTML = '';
+  removeEmployee();
+}
+
+removeEmployee();
 
 
 
@@ -96,7 +141,13 @@ function addEmployee(event) {
   tableDiv.innerHTML = '';
   displayEmployees();
   displayTodayEmployees();
+  schedule.getTableHeader();
+  schedule.getTable();
+  employeeSelector.innerHTML = '';
+  employeeList = JSON.parse(localStorage.getItem('employees'));
+  removeEmployee();
 }
+
 
 function getAndSetLocalStorage(array, newData) { // updates the local 'array' by adding 'newData'
   try {
@@ -145,6 +196,7 @@ function displayEmployees() {
 
   tableDiv.appendChild(table);
 }
+
 
 function displayTodayEmployees() {
   var employees;
