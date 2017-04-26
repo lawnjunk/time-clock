@@ -6,4 +6,30 @@
   box-sizing: border-box;
   margin: 0 auto;
   padding: 0;
+  background-color: #89CCFF;
+}
+
+div#login {
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 200px;
+    height: 200px;
+
+}
+
+label {
+  color:blue;
+  text-transform: uppercase;
+
+}
+input {
+  background-color:white;
+}
+button {
+  color:white;
+  background-color: black;
 }
