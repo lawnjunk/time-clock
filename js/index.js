@@ -7,6 +7,7 @@ var username = document.getElementById('userid');
 var password = document.getElementById('pswrd');
 var form = document.getElementById('loginform');
 var employees = (JSON.parse(localStorage.getItem('employees')));
+var wrong = document.getElementById('wronginput');
 
 function check(event){
   event.preventDefault();
@@ -20,7 +21,7 @@ function check(event){
     console.log(event.target.pswrd.value)
   }
   if(employee === ''){
-    alert('That is not a registered name or password.');
+    wrong.innerHTML = 'Not a valid username and/or password.'
   }
   else {
     localStorage.thisEmployee = (JSON.stringify(employee));
