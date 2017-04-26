@@ -45,3 +45,17 @@ hamburgerIcon.addEventListener('click', function(){
 var image = document.getElementById('img');
 var employee = JSON.parse(localStorage.getItem('thisEmployee'));
 image.setAttribute('src', employee.profilePic);
+
+var phoneNumber = document.getElementById('phoneNumber');
+var email = document.getElementById('email');
+
+phoneNumber.textContent = employee.phoneNumber;
+email.textContent = employee.email;
+
+var logOutButton = document.getElementById('logOut');
+logOutButton.addEventListener('click', logOut);
+
+function logOut() {
+  localStorage.setItem('thisEmployee', '');
+  document.location.href = 'index.html';
+}

@@ -9,10 +9,18 @@
     <div id="top-bar">
     </div>
     <div id="login">
-      <form id="login-form"></form>
-      <button type="submit"></button>
+      <form id="loginform" name="loginform">
+      <label for="userid"> Username: </label>
+      <input id="userid" type="text" name="userid" value="" maxlength="8"/>
+    </br>
+      <label for="pswrd"> Password: </label>
+      <input id="pswrd" type="password" name="pswrd" value="" maxlength="4"/>
+      <button id="button" type="submit" name="button"> Submit</button>
+      <p id='wronginput'></p>
+    </form>
     </div>
 
     <div id="bottom-bar"></div>
+    <script src="js/index.js"></script>
   </body>
 </html>

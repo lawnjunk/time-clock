@@ -3,7 +3,6 @@ var x = 0;
 var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 var tableDiv = document.getElementById('display-employees');
 var addEmployeeForm = document.getElementById('add-employee-form');
-var schedule = new Schedule();
 addEmployeeForm.addEventListener('submit', addEmployee);
 
 var Monday = [];
@@ -12,7 +11,52 @@ var Wednesday = [];
 var Thursday = [];
 var Friday = [];
 
+var employeeList = (JSON.parse(localStorage.getItem('employees')));
+var employeeSelector = document.getElementById('remove-employee');
 
+function removeEmployee(){
+  var firedButton = document.createElement('input');
+  firedButton.setAttribute('type', 'submit');
+  firedButton.setAttribute('value', 'Fired');
+  var selectRemove = document.createElement('select');
+  employeeSelector.appendChild(selectRemove);
+  selectRemove.setAttribute('id', 'removeSelector');
+  employeeSelector.appendChild(firedButton);
+  for(var i = 0; i < employeeList.length; i++) {
+    var removeOption = document.createElement('option');
+    removeOption.setAttribute('value', employeeList[i].name);
+    removeOption.textContent = employeeList[i].name;
+    selectRemove.appendChild(removeOption);
+  }
+  employeeSelector.addEventListener('submit', terminatedWithPrejudice);
+}
+
+
+function terminatedWithPrejudice(event){
+  event.preventDefault();
+
+  var terminated = event.target.removeSelector.value;
+
+  for(var i = 0; i < employeeList.length; i++){
+    if(employeeList[i].name === terminated) {
+      employeeList.splice(i, 1);
+    }
+  }
+  localStorage.setItem('employees', JSON.stringify(employeeList));
+  employeeList = JSON.parse(localStorage.getItem('employees'));
+  tableDiv.innerHTML = '';
+  var table = document.getElementById('table');
+  table.innerHTML = '';
+  makeTable();
+  displayEmployees();
+  displayTodayEmployees();
+  schedule.getTableHeader();
+  schedule.getTable();
+  employeeSelector.innerHTML = '';
+  removeEmployee();
+}
+
+removeEmployee();
 
 
 
@@ -46,14 +90,13 @@ function Schedule() {
   this.thursday = [];
   this.friday = [];
 }
-
 function makeTable(){
   var main = document.getElementById('main');
   var table = document.createElement('table');
   table.setAttribute('id', 'table');
   main.appendChild(table);
 }
-
+makeTable();
 
 Schedule.prototype.getTable = function (){
   var table = document.getElementById('table');
@@ -66,19 +109,17 @@ Schedule.prototype.getTable = function (){
   }
   table.appendChild(tableRow);
 };
-
 Schedule.prototype.getTableHeader = function(){
   var table = document.getElementById('table');
   var tableRow = document.createElement('tr');
   var tableHead = document.createElement('th');
-  for (var i = 0; i < days.length; i++){
+  for (var i = 0; i < days.length;i++){
     tableHead = document.createElement('th');
     tableHead.textContent = days[i];
     tableRow.appendChild(tableHead);
   }
   table.appendChild(tableRow);
 };
-
 function addEmployee(event) {
   event.preventDefault();
   x = 0;
@@ -98,14 +139,15 @@ function addEmployee(event) {
 
   addEmployeeForm.reset();
   tableDiv.innerHTML = '';
-  var table = document.getElementById('table');
-  table.innerHTML = '';
-  makeTable();
   displayEmployees();
   displayTodayEmployees();
   schedule.getTableHeader();
   schedule.getTable();
+  employeeSelector.innerHTML = '';
+  employeeList = JSON.parse(localStorage.getItem('employees'));
+  removeEmployee();
 }
+
 
 function getAndSetLocalStorage(array, newData) { // updates the local 'array' by adding 'newData'
   try {
@@ -154,6 +196,7 @@ function displayEmployees() {
 
   tableDiv.appendChild(table);
 }
+
 
 function displayTodayEmployees() {
   var employees;
@@ -287,6 +330,6 @@ if(document.getElementById('display-employees')) {
 if(document.getElementById('employees-today')) {
   displayTodayEmployees();
 }
-makeTable();
+var schedule = new Schedule();
 schedule.getTableHeader();
 schedule.getTable();
