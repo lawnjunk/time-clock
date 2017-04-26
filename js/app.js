@@ -3,7 +3,6 @@ var x = 0;
 var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 var tableDiv = document.getElementById('display-employees');
 var addEmployeeForm = document.getElementById('add-employee-form');
-var schedule = new Schedule();
 addEmployeeForm.addEventListener('submit', addEmployee);
 
 var Monday = [];
@@ -91,14 +90,13 @@ function Schedule() {
   this.thursday = [];
   this.friday = [];
 }
-
 function makeTable(){
   var main = document.getElementById('main');
   var table = document.createElement('table');
   table.setAttribute('id', 'table');
   main.appendChild(table);
 }
-
+makeTable();
 
 Schedule.prototype.getTable = function (){
   var table = document.getElementById('table');
@@ -111,19 +109,17 @@ Schedule.prototype.getTable = function (){
   }
   table.appendChild(tableRow);
 };
-
 Schedule.prototype.getTableHeader = function(){
   var table = document.getElementById('table');
   var tableRow = document.createElement('tr');
   var tableHead = document.createElement('th');
-  for (var i = 0; i < days.length; i++){
+  for (var i = 0; i < days.length;i++){
     tableHead = document.createElement('th');
     tableHead.textContent = days[i];
     tableRow.appendChild(tableHead);
   }
   table.appendChild(tableRow);
 };
-
 function addEmployee(event) {
   event.preventDefault();
   x = 0;
@@ -143,9 +139,6 @@ function addEmployee(event) {
 
   addEmployeeForm.reset();
   tableDiv.innerHTML = '';
-  var table = document.getElementById('table');
-  table.innerHTML = '';
-  makeTable();
   displayEmployees();
   displayTodayEmployees();
   schedule.getTableHeader();
@@ -337,6 +330,6 @@ if(document.getElementById('display-employees')) {
 if(document.getElementById('employees-today')) {
   displayTodayEmployees();
 }
-makeTable();
+var schedule = new Schedule();
 schedule.getTableHeader();
 schedule.getTable();
