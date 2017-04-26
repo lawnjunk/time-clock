@@ -14,7 +14,7 @@
 }
 
 .hamburger-nav.hidden{
-  transform:translateY(-200px);
+  transform:translateY(-220px);
 }
 .hamburger-icon{
   width: 30px;
@@ -53,4 +53,8 @@ li{
   display: inline-block;
   font-family: 'Lobster', cursive;
   color:rgb(255, 0, 0);
+}
+#title {
+  text-decoration: underline;
+  font-weight: bold;
 }
