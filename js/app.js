@@ -81,7 +81,7 @@ Schedule.prototype.getTableHeader = function(){
 
 function addEmployee(event) {
   event.preventDefault();
-
+  x = 0;
   if(event.target.employeeName.value === '') { // if they didnt enter a name
     return;
   }
