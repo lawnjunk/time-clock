@@ -3,17 +3,31 @@
 var form = document.getElementById('profile-form');
 form.addEventListener('submit', updateProfile);
 
+var employee = JSON.parse(localStorage.getItem('thisEmployee'));
+var currentPic = employee.profilePic;
+if(currentPic === '') {
+  currentPic = 'img/profile.png';
+}
+
+if(form) {
+  populateTextBoxes();
+}
+
 function populateTextBoxes() {
   try {
-    var employee = JSON.parse(localStorage.getItem('thisEmployee'));
+
 
     var profilePicText = document.getElementById('profilePic');
     var phoneNumberText = document.getElementById('phoneNumber');
     var emailText = document.getElementById('email');
 
-    profilePicText.textContent = employee.profilePic;
-    phoneNumberText.textContent = employee.phoneNumber;
-    emailText.textContent = employee.email;
+
+    var profileImage = document.getElementById('profile-img');
+    profileImage.setAttribute('src', currentPic);
+
+    profilePicText.value = employee.profilePic;
+    phoneNumberText.value = employee.phoneNumber;
+    emailText.value = employee.email;
   } catch(error) {
     console.log(error);
   }
@@ -40,7 +54,7 @@ function updateProfile(event) {
 
     localStorage.setItem('thisEmployee', JSON.stringify(employee));
     localStorage.setItem('employees', JSON.stringify(employees));
-    form.clear();
+    form.reset();
     alert('Your information has been saved.');
     document.location.href = 'employee.html';
   } catch(error) {
@@ -48,26 +62,24 @@ function updateProfile(event) {
   }
 }
 
-if(form) {
-  populateTextBoxes();
-}
-
 var pic = document.getElementById('image-form');
 pic.addEventListener('submit', changeImage);
-// localStorage.setItem('thisEmployee', JSON.stringify({profilePic:'dfsfs'}));
-console.log(pic);
+
 function changeImage(event){
   event.preventDefault();
 
   var profilePic = event.target.profilePic.value;
-  console.log(profilePic);
+  if(profilePic === null || profilePic === '') {
+    profilePic = 'img/profile.png';
+    event.target.profilePic.value = profilePic;
+  }
 
   var employees = JSON.parse(localStorage.getItem('employees'));
   var employee = JSON.parse(localStorage.getItem('thisEmployee'));
 
   employee.profilePic = profilePic;
 
-  var image = document.getElementById('img');
+  var image = document.getElementById('profile-img');
   image.setAttribute('src', employee.profilePic);
 
   for(var i = 0; i < employees.length; i++) {
