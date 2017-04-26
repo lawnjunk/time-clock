@@ -237,7 +237,6 @@ function getEmployeeSelect() {
 
 var scheduleTable = document.getElementById('schedule-display');
 
-
 function displaySchedule(){
   var tableRow = document.createElement('tr');
   var tableHead = document.createElement('th');
@@ -247,12 +246,17 @@ function displaySchedule(){
     tableRow.appendChild(tableHead);
   } scheduleTable.appendChild(tableRow);
   tableRow = document.createElement('tr');
+  var ul, li;
   for (var j = 0; j < days.length; j++){
     var tableData = document.createElement('td');
     console.log(x, days[x]);
+    ul = document.createElement('ul');
     for (var k = 0; k < window[days[j]].length; k++){
-      tableData.textContent = window[days[j]][k];
+      li = document.createElement('li');
+      li.textContent = window[days[j]][k];
+      ul.appendChild(li);
     }
+    tableData.appendChild(ul);
     tableRow.appendChild(tableData);
   }
   scheduleTable.appendChild(tableRow);
