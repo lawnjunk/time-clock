@@ -54,13 +54,11 @@ if(form) {
 
 var pic = document.getElementById('image-form');
 pic.addEventListener('submit', changeImage);
-// localStorage.setItem('thisEmployee', JSON.stringify({profilePic:'dfsfs'}));
-console.log(pic);
+localStorage.setItem('thisEmployee', JSON.stringify({profilePic:'dfsfs'}));
 function changeImage(event){
   event.preventDefault();
 
   var profilePic = event.target.profilePic.value;
-  console.log(profilePic);
 
   var employees = JSON.parse(localStorage.getItem('employees'));
   var employee = JSON.parse(localStorage.getItem('thisEmployee'));
