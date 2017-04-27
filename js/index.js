@@ -1,7 +1,42 @@
 'use strict';
+
 var form = document.getElementById('loginform');
-var employees = (JSON.parse(localStorage.getItem('employees')));
 var wrong = document.getElementById('wronginput');
+
+form.addEventListener('submit', check);
+
+employees = (JSON.parse(localStorage.getItem('employees')));
+
+function Employee(name, id) {
+  this.name = name;
+  this.id = id;
+  this.onTheClock = false;
+  this.profilePic = '';
+  this.phoneNumber = '';
+  this.email = '';
+}
+
+if(document.getElementById('loginform')) {
+  if(!localStorage.getItem('employees') || localStorage.getItem('employees').length === 0) { // if localstorage employees doesnt exist, or it is length 0, add the admin account at id 1000
+    var admin = new Employee('admin', 1000);
+    var employees = [];
+    getAndSetLocalStorage(employees, admin);
+  }
+}
+
+function getAndSetLocalStorage(array, newData) { // updates the local 'array' by adding 'newData'
+  try {
+    if(localStorage.getItem('employees')) {
+      array = JSON.parse(localStorage.getItem('employees'));
+    } else {
+      array = [];
+    }
+    array.push(newData);
+    localStorage.setItem('employees', JSON.stringify(array));
+  } catch(error) {
+    console.log(error);
+  }
+}
 
 function check(event){
   event.preventDefault();
@@ -22,6 +57,4 @@ function check(event){
     localStorage.thisEmployee = (JSON.stringify(employee));
     document.location.href='employee.html';
   }
-
 }
-form.addEventListener('submit', check);
