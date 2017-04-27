@@ -1,5 +1,14 @@
 'use strict';
 
+var Monday;
+var Tuesday;
+var Wednesday;
+var Thursday;
+var Friday;
+var scheduleArray;
+var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+
+
 var employee;
 var employees;
 var clockInForm = document.getElementById('clock-in');
@@ -67,3 +76,61 @@ function logOut() {
   localStorage.setItem('thisEmployee', '');
   document.location.href = 'index.html';
 }
+
+
+function updateScheduleArrays() {
+  if(!JSON.parse(localStorage.getItem('scheduleArray'))) {
+    Monday = [];
+    Tuesday = [];
+    Wednesday = [];
+    Thursday = [];
+    Friday = [];
+    scheduleArray = [Monday, Tuesday, Wednesday, Thursday, Friday];
+    localStorage.setItem('scheduleArray', JSON.stringify(scheduleArray));
+  } else {
+    scheduleArray = JSON.parse(localStorage.getItem('scheduleArray'));
+    Monday = scheduleArray[0];
+    Tuesday = scheduleArray[1];
+    Wednesday = scheduleArray[2];
+    Thursday = scheduleArray[3];
+    Friday = scheduleArray[4];
+  }
+}
+
+function storeScheduleArray() {
+  localStorage.setItem('scheduleArray', JSON.stringify(scheduleArray));
+}
+
+updateScheduleArrays();
+
+
+
+
+function displaySchedule(){
+  var scheduleTable = document.getElementById('scheduledisplay');
+  var tableRow = document.createElement('tr');
+  var tableHead = document.createElement('th');
+  for (var i = 0; i < days.length; i++){
+    tableHead = document.createElement('th');
+    tableHead.textContent = days[i];
+    tableRow.appendChild(tableHead);
+  }
+  scheduleTable.appendChild(tableRow);
+  tableRow = document.createElement('tr');
+  var ul, li;
+  for (var j = 0; j < days.length; j++){
+    var tableData = document.createElement('td');
+    ul = document.createElement('ul');
+    for (var k = 0; k < window[days[j]].length; k++){
+      li = document.createElement('li');
+      li.textContent = window[days[j]][k];
+      ul.appendChild(li);
+    }
+    tableData.appendChild(ul);
+    tableRow.appendChild(tableData);
+  }
+  storeScheduleArray();
+  scheduleTable.appendChild(tableRow);
+}
+
+displaySchedule();
