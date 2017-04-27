@@ -56,6 +56,7 @@ html, body{
   text-align: center;
   padding: 35px;
   margin: 200px auto;
+  margin-bottom: 80px;
   background-color: #89CCFF;
 }
 .please-login{
@@ -65,7 +66,7 @@ html, body{
 .bottom-page-break{
   width:70%;
   border-bottom: 1px solid black;
-  margin-top: 20%;
+  margin-top: 10%;
 }
 .small-logo{
   height: 20%;
@@ -83,4 +84,56 @@ html, body{
   margin-top: 5px;
   float: right;
   margin-right: 30px;
+}
+@keyframes slider {
+  0%{
+    left: 100%;
+  }
+  10%{
+    left: 0;
+  }
+  20%{
+    left:-100%;
+  }
+  30%{
+    left:-200%;
+  }
+  40%{
+    left: -200%;
+  }
+  50%{
+    left: -300%;
+  }
+  60%{
+    left: -300%;
+  }
+  70%{
+    left:-400%;
+  }
+  80%{
+    left: -400%;
+  }
+  90%{
+    left:-500%;
+  }
+  100%{
+    left: -500%;
+  }
+}
+#slider{
+  overflow: hidden;
+}
+#slider figure img{
+  width: 3%;
+  height: 200px;
+  float: left;
+}
+#slider figure{
+  position: relative;
+  width: 500%;
+  margin: 0;
+  left: 0;
+  text-align: left;
+  font-size: 0;
+  animation: 15s slider infinite;
 }
