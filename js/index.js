@@ -3,9 +3,12 @@
 var form = document.getElementById('loginform');
 var wrong = document.getElementById('wronginput');
 
-form.addEventListener('submit', check);
-
-employees = (JSON.parse(localStorage.getItem('employees')));
+var employees;
+if(localStorage.getItem('employees')) {
+  employees = JSON.parse(localStorage.getItem('employees'));
+} else {
+  employees = [];
+}
 
 function Employee(name, id) {
   this.name = name;
@@ -19,10 +22,13 @@ function Employee(name, id) {
 if(document.getElementById('loginform')) {
   if(!localStorage.getItem('employees') || localStorage.getItem('employees').length === 0) { // if localstorage employees doesnt exist, or it is length 0, add the admin account at id 1000
     var admin = new Employee('admin', 1000);
-    var employees = [];
+    employees = [];
+    employees.push(admin);
     getAndSetLocalStorage(employees, admin);
   }
 }
+
+form.addEventListener('submit', check);
 
 function getAndSetLocalStorage(array, newData) { // updates the local 'array' by adding 'newData'
   try {
@@ -47,7 +53,7 @@ function check(event){
       employee = employees[i];
     }
   }
-  if(employee === ''){
+  if(!employee){
     wrong.innerHTML = 'Not a valid username and/or password.';
   } else if (employee.id === 1000) {
     localStorage.thisEmployee = (JSON.stringify(employee));
