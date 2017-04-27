@@ -1,3 +1,6 @@
+
+'use strict';
+
 var employeeList = (JSON.parse(localStorage.getItem('employees')));
 
 function removeEmployee(){

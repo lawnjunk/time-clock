@@ -7,25 +7,75 @@
   margin: 0 auto;
   padding: 0;
 }
-body {
-  background-image: url("img/Aaron.png");
-  z-index: 1;
+html, body{
+  background-color: rgba(186, 190, 190, 0.6);
+}
+
+.header{
+  position: fixed;
+  width: 88%;
+  top: 0;
+  z-index: 10;
+}
+.top-bar{
+  background-color: white;
+  margin-left: 15%;
+}
+.second-top{
+  top:53px;
+  background-color: rgb(13, 13, 82);
+  text-align: center;
+  margin-left: 15%;
+}
+.logo{
+  width: 7%;
+  height: 7%;
+  display: inline-block;;
+  float:left;
+  margin-left: 24%;
+  margin-right: 8px;
+  padding: 5px;
+  padding-bottom: 0px;
+  background-color: #D6811F;
+  border-radius: 47%;
+}
+.emergency{
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  margin-right: 90px;
+}
+.company-name{
+  text-align: center;
+  font-size: 39px;
+  font-family: 'Lobster', cursive;
+  color:rgb(13, 13, 82);
+  display: inline-block;
 }
 .hamburger-nav{
-  position: fixed;
+  position: absolute;
   width:200px;
   float:left;
+  margin-left: 2%;
+  background-color: white;
+  border: 1px solid grey;
+  padding-bottom: 10px;
+  transition: transform 500ms;
 }
 
 .hamburger-nav.hidden{
-  transform:translateY(-220px);
+  transform:translateY(-300px);
+}
+ul{
+  list-style-type: none;
 }
 .hamburger-icon{
   width: 30px;
   height:50px;
-  margin: 10px auto;
+  margin: 40px auto;
   margin-bottom: 0;
-  position: relative;
+  position: absolute;
+  float: left;
 }
 .hamburger-icon div{
   height: calc(15px/3);
@@ -33,21 +83,22 @@ body {
   background: black;
 }
 .profile-image{
-width: 110px;
-height: 80px;
+width: 130px;
+height: 130px;
 margin: 10%;
+margin-top: 30px;
 padding-left: 30px;
-border-radius: 70%;
+padding-top: 10px;
+border-radius: 35% 15%;
 }
 li{
   text-align: center;
 }
 .emplyee-month{
-  height: 70%;
-  width: 70%;
+  height: 65%;
+  width: 65%;
+  margin-top: 150px;
 }
-
-
 .best-employee-h1{
   z-index: 2
   position: relative;
@@ -55,7 +106,42 @@ li{
   font-family: 'Lobster', cursive;
   color:rgb(255, 0, 0);
 }
+.emplyee-month-description{
+  border: 1px solid black;
+  height: 300px;
+  background: url('../img/Aaron.png');
+  background-size: contain;
+  text-align: center;
+  color: white;
+  margin-top: 30px;
+  padding-top: 200px;
+}
 #title {
   text-decoration: underline;
   font-weight: bold;
+}
+.clock-in{
+  margin: 40px;
+  margin-left: 25%;
+}
+.clock-in-button{
+  margin-top: 10px;
+  width: 16%;
+  height: 25px;;
+  display: inline-block;
+  float:left;
+}
+.clock-in-button:hover{
+  background-color: orange;
+}
+.clock-out-button{
+  margin-top: 10px;
+  width: 12%;
+  height: 25px;;
+  display: inline-block;
+  float:right;
+  margin-right: 25%;
+}
+.clock-out-button:hover{
+  background-color: orange;
 }
