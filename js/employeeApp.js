@@ -1,5 +1,5 @@
 'use strict';
-<<<<<<< HEAD
+
 var Monday;
 var Tuesday;
 var Wednesday;
@@ -7,11 +7,10 @@ var Thursday;
 var Friday;
 var scheduleArray;
 var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-=======
+
 
 var employee;
 var employees;
->>>>>>> 3edada990a986a93d69b270d7a9428d172ae45ba
 var clockInForm = document.getElementById('clock-in');
 var clockOutForm = document.getElementById('clock-out');
 var hamburgerNav = document.getElementById('hamburger-nav');
