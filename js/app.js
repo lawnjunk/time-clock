@@ -5,11 +5,37 @@ var tableDiv = document.getElementById('display-employees');
 var addEmployeeForm = document.getElementById('add-employee-form');
 addEmployeeForm.addEventListener('submit', addEmployee);
 
-var Monday = [];
-var Tuesday = [];
-var Wednesday = [];
-var Thursday = [];
-var Friday = [];
+var Monday;
+var Tuesday;
+var Wednesday;
+var Thursday;
+var Friday;
+var scheduleArray;
+
+function updateScheduleArrays() {
+  if(!JSON.parse(localStorage.getItem('scheduleArray'))) {
+    Monday = [];
+    Tuesday = [];
+    Wednesday = [];
+    Thursday = [];
+    Friday = [];
+    scheduleArray = [Monday, Tuesday, Wednesday, Thursday, Friday];
+    localStorage.setItem('scheduleArray', JSON.stringify(scheduleArray));
+  } else {
+    scheduleArray = JSON.parse(localStorage.getItem('scheduleArray'));
+    Monday = scheduleArray[0];
+    Tuesday = scheduleArray[1];
+    Wednesday = scheduleArray[2];
+    Thursday = scheduleArray[3];
+    Friday = scheduleArray[4];
+  }
+}
+
+function storeScheduleArray() {
+  localStorage.setItem('scheduleArray', JSON.stringify(scheduleArray));
+}
+
+updateScheduleArrays();
 
 var employeeList = (JSON.parse(localStorage.getItem('employees')));
 var employeeSelector = document.getElementById('remove-employee');
@@ -31,17 +57,28 @@ function removeEmployee(){
   employeeSelector.addEventListener('submit', terminatedWithPrejudice);
 }
 
-
 function terminatedWithPrejudice(event){
   event.preventDefault();
-
-  var terminated = event.target.removeSelector.value;
+  x = 0;
+  var terminated = event.target.removeSelector.value, firedEmployee;
 
   for(var i = 0; i < employeeList.length; i++){
     if(employeeList[i].name === terminated) {
-      employeeList.splice(i, 1);
+      firedEmployee = employeeList.splice(i, 1);
     }
   }
+
+  for(var dayArr = 0; dayArr < scheduleArray.length; dayArr++) {
+
+    for(var worker = 0; worker < window[days[dayArr]].length; worker++) {
+      if(window[days[dayArr]][worker] === firedEmployee[0].name) {
+        window[days[dayArr]].splice(worker, 1);
+      }
+    }
+  }
+
+  localStorage.setItem('scheduleArray', JSON.stringify(scheduleArray));
+
   localStorage.setItem('employees', JSON.stringify(employeeList));
   employeeList = JSON.parse(localStorage.getItem('employees'));
   tableDiv.innerHTML = '';
@@ -52,15 +89,13 @@ function terminatedWithPrejudice(event){
   displayTodayEmployees();
   schedule.getTableHeader();
   schedule.getTable();
+  scheduleTable.innerHTML = '';
+  displaySchedule();
   employeeSelector.innerHTML = '';
   removeEmployee();
 }
 
 removeEmployee();
-
-
-
-
 
 var employeeCounter; // if no employee counter is set, set to 1000. otherwise fetch from localstorage
 try {
@@ -90,12 +125,14 @@ function Schedule() {
   this.thursday = [];
   this.friday = [];
 }
+
 function makeTable(){
   var main = document.getElementById('main');
   var table = document.createElement('table');
   table.setAttribute('id', 'table');
   main.appendChild(table);
 }
+
 makeTable();
 
 Schedule.prototype.getTable = function (){
@@ -109,6 +146,7 @@ Schedule.prototype.getTable = function (){
   }
   table.appendChild(tableRow);
 };
+
 Schedule.prototype.getTableHeader = function(){
   var table = document.getElementById('table');
   var tableRow = document.createElement('tr');
@@ -120,6 +158,7 @@ Schedule.prototype.getTableHeader = function(){
   }
   table.appendChild(tableRow);
 };
+
 function addEmployee(event) {
   event.preventDefault();
   x = 0;
@@ -139,6 +178,8 @@ function addEmployee(event) {
 
   addEmployeeForm.reset();
   tableDiv.innerHTML = '';
+  var table = document.getElementById('table');
+  table.innerHTML = '';
   displayEmployees();
   displayTodayEmployees();
   schedule.getTableHeader();
@@ -147,7 +188,6 @@ function addEmployee(event) {
   employeeList = JSON.parse(localStorage.getItem('employees'));
   removeEmployee();
 }
-
 
 function getAndSetLocalStorage(array, newData) { // updates the local 'array' by adding 'newData'
   try {
@@ -197,7 +237,6 @@ function displayEmployees() {
   tableDiv.appendChild(table);
 }
 
-
 function displayTodayEmployees() {
   var employees;
 
@@ -243,13 +282,11 @@ function dailyPush(event){
   event.preventDefault();
 
   var employee = event.target.id;
-  console.log(employee);
   window[employee].push(event.target.selector.value);
+  storeScheduleArray();
   scheduleTable.innerHTML = '';
   displaySchedule();
 }
-
-
 
 function getEmployeeSelect() {
   var submitForm = document.createElement('form');
@@ -265,7 +302,6 @@ function getEmployeeSelect() {
   var employees;
 
   submitForm.addEventListener('submit', dailyPush);
-
 
   try {
     if(JSON.parse(localStorage.getItem('employees'))) { // grab employees array or create a blank one if it doesnt exist locally
@@ -286,7 +322,6 @@ function getEmployeeSelect() {
   return submitForm;
 }
 
-
 var scheduleTable = document.getElementById('schedule-display');
 
 function displaySchedule(){
@@ -296,12 +331,12 @@ function displaySchedule(){
     tableHead = document.createElement('th');
     tableHead.textContent = days[i];
     tableRow.appendChild(tableHead);
-  } scheduleTable.appendChild(tableRow);
+  }
+  scheduleTable.appendChild(tableRow);
   tableRow = document.createElement('tr');
   var ul, li;
   for (var j = 0; j < days.length; j++){
     var tableData = document.createElement('td');
-    console.log(x, days[x]);
     ul = document.createElement('ul');
     for (var k = 0; k < window[days[j]].length; k++){
       li = document.createElement('li');
@@ -311,19 +346,19 @@ function displaySchedule(){
     tableData.appendChild(ul);
     tableRow.appendChild(tableData);
   }
+  storeScheduleArray();
   scheduleTable.appendChild(tableRow);
 }
 
 displaySchedule();
 
-
 if(document.getElementById('display-employees')) {
+
   if(!localStorage.getItem('employees') || localStorage.getItem('employees').length === 0) { // if localstorage employees doesnt exist, or it is length 0, add the admin account at id 1000
-    var admin = new Employee('admin', 1000);
+    var admin = new Employee('admin', employeeCounter);
     var employees = [];
     getAndSetLocalStorage(employees, admin);
   }
-
   displayEmployees();
 }
 
