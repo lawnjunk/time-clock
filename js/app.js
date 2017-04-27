@@ -100,6 +100,15 @@ if(document.getElementById('employees-today')) {
   displayTodayEmployees();
 }
 
+var logOutButton = document.getElementById('logOut');
+logOutButton.addEventListener('click', logOut);
+
+function logOut() {
+  localStorage.setItem('thisEmployee', '');
+  document.location.href = 'index.html';
+}
+
+
 function getAndSetLocalStorage(array, newData) { // updates the local 'array' by adding 'newData'
   try {
     if(localStorage.getItem('employees')) {
