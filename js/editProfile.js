@@ -69,7 +69,6 @@ function changeImage(event){
   event.preventDefault();
 
   var profilePic = event.target.profilePic.value;
-
   if(profilePic === null || profilePic === '') {
     profilePic = 'img/profile.png';
     event.target.profilePic.value = profilePic;
