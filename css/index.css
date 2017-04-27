@@ -1,0 +1,86 @@
+.clear-fix{
+  clear: both;
+}
+
+*{
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+}
+html, body{
+  background-color: rgba(186, 190, 190, 0.6);
+}
+.header{
+  position: fixed;
+  width: 88%;
+  top: 0;
+  z-index: 10;
+}
+.top-bar{
+  background-color: white;
+  margin-left: 15%;
+}
+.second-top{
+  top:53px;
+  background-color: rgb(13, 13, 82);
+  text-align: center;
+  margin-left: 15%;
+}
+.logo{
+  width: 7%;
+  height: 7%;
+  display: inline-block;;
+  float:left;
+  margin-left: 30%;
+  margin-right: 8px;
+  padding: 5px;
+  padding-bottom: 0px;
+  background-color: #D6811F;
+  border-radius: 47%;
+}
+.emergency{
+  color: white;
+  font-size: 14px;
+}
+.company-name{
+  text-align: center;
+  font-size: 39px;
+  font-family: 'Lobster', cursive;
+  color: rgb(13, 13, 82);
+  display: inline-block;
+}
+.login{
+  border: 5px double black;
+  width: 38%;
+  height: 150px;
+  text-align: center;
+  padding: 35px;
+  margin: 200px auto;
+  background-color: #89CCFF;
+}
+.please-login{
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+.bottom-page-break{
+  width:70%;
+  border-bottom: 1px solid black;
+  margin-top: 20%;
+}
+.small-logo{
+  height: 20%;
+  margin-left: 400px;
+  position: relative;
+  bottom: 20px;
+}
+.userid{
+  margin: 3px;
+}
+.pswrd{
+  margin: 4px;
+}
+#button{
+  margin-top: 5px;
+  float: right;
+  margin-right: 30px;
+}

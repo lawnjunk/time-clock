@@ -7,43 +7,48 @@
 </head>
 
 <body>
-
-  <div id="top-bar">
-    <div id="hamburger-nav" class="hamburger-nav hidden">
-      <img class="profile-image" id="img" src="img/profile.png"/>
-      <div class="menu">
-        <ul>
-          <li><a href="editProfile.html">Change Profile Information</a></li>
-          <li id="title">Your Information</li>
-          <li>Phone Number: <span id="phoneNumber"></span></li>
-          <li>Email: <span id="email"></span></li>
-          <li><a id="logOut" href="#">Log out</a></li>
-        </ul>
+  <div class="header">
+    <div id="top-bar" class="top-bar">
+      <div id="hamburger-nav" class="hamburger-nav hidden">
+        <img class="profile-image" id="img" src="img/profile.png"/>
+        <div class="menu">
+          <ul>
+            <li><a href="editProfile.html">Change Profile Information</a></li>
+            <li id="title">Your Information</li>
+            <li>Phone Number: <span id="phoneNumber"></span></li>
+            <li>Email: <span id="email"></span></li>
+            <li><a id="logOut" href="#">Log out</a></li>
+          </ul>
+        </div>
+        <div id="hamburger-icon" class="hamburger-icon">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
-      <div id="hamburger-icon" class="hamburger-icon">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+      <img class="logo" src="img/SpencerExcellence.png"/>
+      <h1 class="company-name">Spencer's Excellence</h1>
+    </div>
+    <div class="second-top">
+      <h3 class="emergency">Please Call (111)-111-111 if you are too sick to work</h3>
     </div>
   </div>
-
   <div id="employee-main">
 
     <div class="emplyee-month" id="employee-month">
-      <img class="employee-month-image" src="img/Aaron.png"/>
-      <h1 class="best-employee-h1"> Best Employee of the month</h1>
-      <h2> At Spencer Industries punctuality is of the top importance</h2>
-      <p>
-        Always interacts with co-workers and other departments in a respectful manner and values their contributions. Cooperate with co-workers and assists them when help is needed. Is complimentary of other departments and a job well done. Arrives on time for scheduled meetings, events or activities.
-      </p>
-      <h2>Employee of the month will receive $10,000!</h2>
+        <h1 class="best-employee-h1"> Employee of the month --- receive $10,000!</h1>
+        <div class="emplyee-month-description">
+        <h2> At Spencer Industries punctuality is of the utmost importance</h2>
+        <p>
+          Always interacts with co-workers and other departments in a respectful manner and values their contributions. Cooperate with co-workers and assists them when help is needed. Is complimentary of other departments and a job well done. Arrives on time for scheduled meetings, events or activities.
+        </p>
+      </div>
     </div>
-    <form id="clock-in">
-      <button id="clockIn" type="submit">Clock In</button>
+    <form id="clock-in" class="clock-in">
+      <button id="clockIn" type="submit" class="clock-in-button">Clock In</button>
     </form>
-    <form id="clock-out">
-      <button id="clockOut" type="submit">Clock Out</button>
+    <form id="clock-out" class="clock-out">
+      <button id="clockOut" type="submit" class="clock-out-button">Clock Out</button>
     </form>
     <table id="table"></table>
 
