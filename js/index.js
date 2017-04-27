@@ -1,6 +1,11 @@
 'use strict';
+
 var form = document.getElementById('loginform');
 var wrong = document.getElementById('wronginput');
+
+form.addEventListener('submit', check);
+
+employees = (JSON.parse(localStorage.getItem('employees')));
 
 function Employee(name, id) {
   this.name = name;
@@ -19,7 +24,6 @@ if(document.getElementById('loginform')) {
   }
 }
 
-
 function getAndSetLocalStorage(array, newData) { // updates the local 'array' by adding 'newData'
   try {
     if(localStorage.getItem('employees')) {
@@ -33,8 +37,6 @@ function getAndSetLocalStorage(array, newData) { // updates the local 'array' by
     console.log(error);
   }
 }
-
-employees = (JSON.parse(localStorage.getItem('employees')));
 
 function check(event){
   event.preventDefault();
@@ -55,6 +57,4 @@ function check(event){
     localStorage.thisEmployee = (JSON.stringify(employee));
     document.location.href='employee.html';
   }
-
 }
-form.addEventListener('submit', check);
