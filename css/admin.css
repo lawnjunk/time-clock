@@ -33,14 +33,14 @@ html, body{
   margin-right: 8px;
   padding: 5px;
   padding-bottom: 0px;
-  background-color: #D6811F;
+  background-color: #f47b00;
   border-radius: 47%;
 }
 .emergency{
   color: white;
-  font-size: 14px;
+  font-size: 12px;
   text-align: center;
-  margin-right: 43%;
+  margin-right: 30%;
 }
 .company-name{
   text-align: center;
@@ -55,12 +55,23 @@ html, body{
   background-color: white;
   padding-top: 8px;
   padding-bottom: 300px;
+  margin: 0 auto;
 }
 .add-employee{
   margin-top: 150px;
+  text-align: center;
+}
+.remove-employee{
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .display-employees{
   border: 1px solid black;
+  text-align: center;
+}
+.employees-on-the-clock{
+  padding-left: 100px;
 }
 ul{
   list-style-type: none;
