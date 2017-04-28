@@ -147,6 +147,7 @@ div#scheduledisplay {
   position: absolute;
   margin-top:65px;
   margin-left: 265px;
+  margin-bottom: 65px;
   border:1px solid black;
   background-color:#89CCFF;
 }
