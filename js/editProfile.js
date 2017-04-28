@@ -24,6 +24,7 @@ function populateTextBoxes() {
     var emailText = document.getElementById('email');
     var profileImage = document.getElementById('profile-img');
     profileImage.setAttribute('src', currentPic);
+    profileImage.setAttribute('class', 'edit-profile-picture');
     profilePicText.value = employee.profilePic;
     phoneNumberText.value = employee.phoneNumber;
     emailText.value = employee.email;
