@@ -29,8 +29,8 @@ html{
   height: 7%;
   display: inline-block;;
   float:left;
-  margin-left: 23%;
-  margin-right: 8px;
+  margin-left: 25%;
+
   padding: 5px;
   padding-bottom: 0px;
   background-color: #f47b00;
@@ -39,6 +39,8 @@ html{
 .emergency{
   color: white;
   font-size: 17px;
+  text-align: center;
+  margin-right: 7%;
 }
 .company-name{
   text-align: center;
@@ -49,7 +51,8 @@ html{
 }
 .body-part{
   width: 76.5%;
-  margin-left: 162px;
+  height: 100%;
+  margin 0 auto;
   background-color: white;
   padding-top: 8px;
 }
@@ -126,7 +129,7 @@ html{
 }
 #slider{
   overflow: hidden;
-  margin-top: 180px;
+  margin-top: 100px;
 }
 #slider figure img{
   width: 3%;
