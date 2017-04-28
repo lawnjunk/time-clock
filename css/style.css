@@ -6,30 +6,48 @@
   box-sizing: border-box;
   margin: 0 auto;
   padding: 0;
-  background-color: #89CCFF;
 }
-
-div#login {
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 200px;
-    height: 200px;
-
+html, body{
+  background-color: rgba(186, 190, 190, 0.6);
 }
-
-label {
-  color:blue;
-  text-transform: uppercase;
-
+.header{
+  position: fixed;
+  width: 88%;
+  top: 0;
+  z-index: 10;
 }
-input {
-  background-color:white;
+.top-bar{
+  background-color: white;
+  margin-left: 15%;
 }
-button {
-  color:white;
-  background-color: black;
+.second-top{
+  top:53px;
+  background-color: rgb(13, 13, 82);
+  text-align: center;
+  margin-left: 15%;
+}
+.logo{
+  width: 7%;
+  height: 7%;
+  display: inline-block;;
+  float:left;
+  margin-left: 24%;
+  margin-right: 8px;
+  padding: 5px;
+  padding-bottom: 0px;
+  background-color: #D6811F;
+  border-radius: 47%;
+}
+.emergency{
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  margin-right: 90px;
+}
+.company-name{
+  text-align: center;
+  font-size: 39px;
+  font-family: 'Lobster', cursive;
+  color:rgb(13, 13, 82);
+  display: inline-block;
 }
