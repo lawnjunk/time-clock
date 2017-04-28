@@ -18,13 +18,13 @@ html{
 }
 .top-bar{
   background-color: white;
-  margin-left: 15%;
+  margin-left: 18%;
 }
 .second-top{
   top:53px;
   background-color: rgb(13, 13, 82);
   text-align: center;
-  margin-left: 15%;
+  margin-left: 18%;
 }
 .logo{
   width: 7%;
@@ -32,7 +32,6 @@ html{
   display: inline-block;;
   float:left;
   margin-left: 25%;
-
   padding: 5px;
   padding-bottom: 0px;
   background-color: #f47b00;
@@ -46,14 +45,13 @@ html{
 }
 .company-name{
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   font-family: 'Lobster', cursive;
   color: rgb(13, 13, 82);
   display: inline-block;
 }
 .body-part{
   width: 76.5%;
-  height: 100%;
   margin 0 auto;
   background-color: white;
   padding-top: 8px;
@@ -65,22 +63,23 @@ html{
   text-align: center;
   padding: 50px;
   padding-top: 8px;
-  margin: 200px auto;
+  margin: 0 auto;
+  margin-top: 200px;
   margin-bottom: 60px;
 }
 .please-login{
   font-size: 36px;
-  margin-right: 20%;
+
   color: rgb(13, 13, 82);
 }
 .userid{
   margin: 2px;
-  margin-right: 10%;
+
   font-size: 19px;
 }
 .pswrd{
   margin: 4px;
-  margin-right: 10%;
+
   font-size: 19px;
   padding-bottom: 15px;
 }
@@ -131,7 +130,9 @@ html{
 }
 #slider{
   overflow: hidden;
-  margin-top: 100px;
+  margin-top: 190px;
+  margin-bottom: -25px;
+
 }
 #slider figure img{
   width: 3%;

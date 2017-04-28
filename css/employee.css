@@ -13,7 +13,7 @@ html{
 
 .header{
   position: fixed;
-  width: 80%;
+  width: 88%;
   top: 0;
   z-index: 10;
 }
@@ -94,7 +94,7 @@ li{
   text-align: center;
 }
 .body-part{
-  width: 70%;
+  width: 76.5%;
   margin: 0 auto;
   background-color: white;
   padding-top: 8px;
@@ -115,7 +115,7 @@ li{
 }
 .best-employee-photo{
   height:66%;
-  width:30%;
+  width:34%;
   display: inline-block;
   float: left;
   margin-left: 0;
@@ -131,7 +131,7 @@ li{
   color: white;
   display: inline-block;
   float: right;
-  margin-left: 20px;
+  margin-left: 5px;
   margin-top: 50px;
 }
 #title {
@@ -167,7 +167,7 @@ li{
   background-color: orange;
 }
 .business-images{
-  width: 90%;
+  width: 98%;
   height: 300px;
 
 }
@@ -208,7 +208,7 @@ li{
   float: right;
 }
 .scheduledisplay {
-  margin-top: 375px;
+  margin-top: 425px;
   background-color: white;
   padding-bottom: 80px;
 }

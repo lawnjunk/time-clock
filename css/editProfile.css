@@ -18,21 +18,20 @@ html, body{
 }
 .top-bar{
   background-color: white;
-  margin-left: 15%;
+  margin-left: 18%;
 }
 .second-top{
   top:53px;
   background-color: rgb(13, 13, 82);
   text-align: center;
-  margin-left: 15%;
+  margin-left: 18%;
 }
 .logo{
   width: 7%;
   height: 7%;
   display: inline-block;;
   float:left;
-  margin-left: 24%;
-  margin-right: 8px;
+  margin-left: 25%;
   padding: 5px;
   padding-bottom: 0px;
   background-color: #D6811F;
@@ -40,13 +39,13 @@ html, body{
 }
 .emergency{
   color: white;
-  font-size: 14px;
+  font-size: 17px;
   text-align: center;
-  margin-right: 90px;
+  margin-right: 7%;
 }
 .company-name{
   text-align: center;
-  font-size: 39px;
+  font-size: 40px;
   font-family: 'Lobster', cursive;
   color:rgb(13, 13, 82);
   display: inline-block;
@@ -54,21 +53,28 @@ html, body{
 .edit-profile-picture{
   height: 200px;
   width: 200px;
-  margin-top: 500px;
-  margin-left: 40%;
+  margin: 0 auto;
+  margin-top: 100px;
+  text-align: center;
 }
 .image-form{
-  margin-top: 50px;
-  margin-left: 40%;
+  margin: 0 auto;
+  margin-top: 10px;
+  text-align: center;
 }
 .profile-form{
+  margin: 0 auto;
   margin-top: 10px;
-  margin-left: 35%;
+  margin-bottom: 398px;
+  text-align: center;
+}
+#profile-image {
+  text-align: center;
 }
 .body-part{
   width: 76.5%;
-  margin-left: 162px;
+  margin: 0 auto;
   background-color: white;
   padding-top: 8px;
-  padding-bottom: 300px;
+  height: 100%;
 }
