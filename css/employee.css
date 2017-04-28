@@ -7,13 +7,13 @@
   margin: 0 auto;
   padding: 0;
 }
-html, body{
+html{
   background-color: rgba(186, 190, 190, 0.6);
 }
 
 .header{
   position: fixed;
-  width: 88%;
+  width: 80%;;
   top: 0;
   z-index: 10;
 }
@@ -32,22 +32,21 @@ html, body{
   height: 7%;
   display: inline-block;;
   float:left;
-  margin-left: 24%;
-  margin-right: 8px;
+  margin-left: 25%;
   padding: 5px;
   padding-bottom: 0px;
-  background-color: #D6811F;
+  background-color: #f47b00;
   border-radius: 47%;
 }
 .emergency{
   color: white;
-  font-size: 14px;
+  font-size: 17px;
   text-align: center;
-  margin-right: 90px;
+  margin-right: 32%;
 }
 .company-name{
   text-align: center;
-  font-size: 39px;
+  font-size: 40px;
   font-family: 'Lobster', cursive;
   color:rgb(13, 13, 82);
   display: inline-block;
@@ -94,25 +93,43 @@ border-radius: 35% 15%;
 li{
   text-align: center;
 }
+.body-part{
+  width: 70%;
+  margin-left: 162px;
+  background-color: white;
+  padding-top: 8px;
+  height: 100%;
+}
 .emplyee-month{
   height: 65%;
-  width: 65%;
-  margin-top: 150px;
+  width: 70%;
+  margin-top: 100px;
 }
 .best-employee-h1{
   display: inline-block;
   font-family: 'Lobster', cursive;
-  color:rgb(255, 0, 0);
+  color:#f47b00;
+}
+.best-employee-photo{
+  height:66%;
+  width: 30%;
+  display: inline-block;
+  float: left;
+  margin-left: 0;
+  margin-top: 50px;
 }
 .emplyee-month-description{
-  border: 1px solid black;
-  height: 300px;
-  background: url('../img/Aaron.png');
+  width: 65%;
+  background-color: #002740;
+  opacity: 0.9;
   background-size: contain;
   text-align: center;
+  padding: 30px;
   color: white;
-  margin-top: 30px;
-  padding-top: 200px;
+  display: inline-block;
+  float: right;
+  margin-left: 30px;
+  margin-top: 50px;
 }
 #title {
   text-decoration: underline;
@@ -123,18 +140,20 @@ li{
   margin-left: 25%;
 }
 .clock-in-button{
-  margin-top: 10px;
-  width: 16%;
+  margin-top: 80px;
+  width: 20%;
   height: 25px;;
   display: inline-block;
   float:left;
+  margin-bottom: 50px;
 }
 .clock-in-button:hover{
   background-color: orange;
 }
 .clock-out-button{
-  margin-top: 10px;
-  width: 12%;
+  margin-top: 80px;
+  margin-bottom: 50px;
+  width: 15%;
   height: 25px;;
   display: inline-block;
   float:right;
@@ -143,20 +162,55 @@ li{
 .clock-out-button:hover{
   background-color: orange;
 }
-div#scheduledisplay {
-  position: absolute;
-  margin-top:65px;
-  margin-left: 265px;
+.business-images:{
+  width: 100%;
+  height: 350px;
+}
+.b-one{
+  width: 38%;
+  height:350px;
+  display: inline-block;
+  float: left;
+}
+.b-two{
+  width: 33%;
+  height: 175px;
+  display: inline-block;
+  float: right;
+}
+.quote-one{
+  width: 29%;
+  height: 175px;
+  display: inline-block;
+  float: right;
+  padding: 25px;
+  background-color: #002740;
+  color: white;
+}
+.quote-two{
+  width: 33%;
+  height: 175px;
+  display: inline-block;
+  float: right;
+  padding: 25px;
+  background-color: #f47b00 ;
+  color: white;
+}
+.b-three{
+  width: 29%;
+  height: 175px;
+  display: inline-block;
+  float: right;
+}
+.scheduledisplay {
+  margin-top: 800px;
   margin-bottom: 35px;
-  border:1px solid black;
-  background-color:#89CCFF;
+  background-color: white;
+  padding-bottom: 80px;
 }
 td {
-  width:150px;
+  width:200px;
 }
-ul {
-  border:1px solid black;
-}
-li {
-  border:1px solid black;
+li:nth-child(odd) {
+    background-color: rgba(186, 190, 190, 0.6);
 }

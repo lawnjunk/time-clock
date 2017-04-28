@@ -33,32 +33,38 @@
       <h3 class="emergency">Please Call (111)-111-1111 if you are too sick to work</h3>
     </div>
   </div>
-  <div id="employee-main">
+  <div class="body-part">
+    <div id="employee-main">
 
-    <div class="emplyee-month" id="employee-month">
+      <div class="emplyee-month" id="employee-month">
         <h1 class="best-employee-h1"> Employee of the month --- receive $10,000!</h1>
+        <img class="best-employee-photo" src="img/Aaron.png"/>
         <div class="emplyee-month-description">
-        <h2> At Spencer Industries punctuality is of the utmost importance</h2>
-        <p>
-          Always interacts with co-workers and other departments in a respectful manner and values their contributions. Cooperate with co-workers and assists them when help is needed. Is complimentary of other departments and a job well done. Arrives on time for scheduled meetings, events or activities.
-        </p>
+          <h2> At Spencer Industries punctuality is of the utmost importance</h2>
+          <p>
+            Always interacts with co-workers and other departments in a respectful manner and values their contributions. Cooperate with co-workers and assists them when help is needed. Is complimentary of other departments and a job well done. Arrives on time for scheduled meetings, events or activities.
+          </p>
+        </div>
       </div>
+      <form id="clock-in" class="clock-in">
+        <button id="clockIn" type="submit" class="clock-in-button">Clock In</button>
+      </form>
+      <form id="clock-out" class="clock-out">
+        <button id="clockOut" type="submit" class="clock-out-button">Clock Out</button>
+      </form>
+      <table id="table"></table>
+      <div class="business-images">
+        <img class="b-one" src="img/b1.png"/>
+        <img class="b-two" src="img/b2.png"/>
+        <p class="quote-one">Honesty and loyalty are key. If two people can be honest with each other about everything, that's probably the biggest key to success.
+        </p>
+        <p class="quote-two">Success is no accident. It is hard work, perseverance, learning, studying, sacrifice and most of all, love of what you are doing or learning to do.
+        </p>
+        <img class="b-three" src="img/b3.png"/>
+      </div>
+      <div id="scheduledisplay" class="scheduledisplay"></div>
     </div>
-    <form id="clock-in" class="clock-in">
-      <button id="clockIn" type="submit" class="clock-in-button">Clock In</button>
-    </form>
-    <form id="clock-out" class="clock-out">
-      <button id="clockOut" type="submit" class="clock-out-button">Clock Out</button>
-    </form>
-    <table id="table"></table>
+    <script src="js/employeeApp.js"></script>
+  </body>
 
-  </div>
-  <div id="scheduledisplay">
-  </div>
-
-  <div id="bottom-bar"></div>
-
-  <script src="js/employeeApp.js"></script>
-</body>
-
-</html>
+  </html>
