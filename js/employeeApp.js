@@ -15,9 +15,18 @@ clockOutForm.addEventListener('submit', clockOut);
 function clockIn(event) {
   event.preventDefault();
 
+  var employees = JSON.parse(localStorage.getItem('employees'));
   var employee = JSON.parse(localStorage.getItem('thisEmployee'));
   employee.onTheClock = true;
+
+  for(var i = 0; i < employees.length; i++) {
+    if(employees[i].id === employee.id) {
+      employees[i] = employee;
+    }
+  }
   localStorage.setItem('thisEmployee', JSON.stringify(employee));
+  localStorage.setItem('employees', JSON.stringify(employees));
+  alert('You are on the clock!');
 }
 
 function clockOut(event) {
@@ -35,6 +44,7 @@ function clockOut(event) {
   }
   localStorage.setItem('thisEmployee', JSON.stringify(employee));
   localStorage.setItem('employees', JSON.stringify(employees));
+  alert('You are off the clock!');
 }
 
 var hamburgerNav = document.getElementById('hamburger-nav');
