@@ -13,19 +13,17 @@ html{
 
 .header{
   position: fixed;
-  width: 80%;;
+  width: 100%;;
   top: 0;
   z-index: 10;
 }
 .top-bar{
   background-color: white;
-  margin-left: 15%;
 }
 .second-top{
   top:53px;
   background-color: rgb(13, 13, 82);
   text-align: center;
-  margin-left: 15%;
 }
 .logo{
   width: 7%;
