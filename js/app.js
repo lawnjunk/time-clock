@@ -158,7 +158,7 @@ function removeEmployee(){
   employeeList;
   var firedButton = document.createElement('input');
   firedButton.setAttribute('type', 'submit');
-  firedButton.setAttribute('value', 'Fired');
+  firedButton.setAttribute('value', 'Fire');
   var selectRemove = document.createElement('select');
   employeeSelector.appendChild(selectRemove);
   selectRemove.setAttribute('id', 'removeSelector');
@@ -231,6 +231,7 @@ function displayEmployees() {
   table = document.createElement('table');
   titleRow = document.createElement('tr');
   titleData = document.createElement('th');
+  titleData.setAttribute('colspan', 2);
   titleData.textContent = 'All Employees';
   titleRow.appendChild(titleData);
   table.appendChild(titleRow);
@@ -273,6 +274,7 @@ function displayTodayEmployees() {
   table = document.createElement('table');
   titleRow = document.createElement('tr');
   titleData = document.createElement('th');
+  titleData.setAttribute('colspan', 2);
   titleData.textContent = 'Employees On The Clock';
   titleRow.appendChild(titleData);
   table.appendChild(titleRow);
